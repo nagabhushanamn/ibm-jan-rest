@@ -1,0 +1,14 @@
+
+
+shopIT
+---------
+
+	- BillingComp  : getTotalPrice(cart:array)
+	- PriceMatrix  : getPrice(item:string)
+	
+	------------------------------------------
+	
+	
+	
+	
+	
