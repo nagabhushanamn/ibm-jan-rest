@@ -16,18 +16,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.domain.Order;
-import com.example.demo.repository.OrderRepository;
+import com.example.demo.repository.OrdersRepository;
 import com.example.demo.resource.OrderResource;
 import com.example.demo.resource.OrderResourceAssembler;
 
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @RestController
 @ExposesResourceFor(Order.class)
-@RequestMapping(value = "/orders", produces = "application/json")
-public class OrderController {
+@RequestMapping(value = "/api/orders", produces = "application/json")
+public class OrderRestController {
 
 	@Autowired
-	private OrderRepository repository;
+	private OrdersRepository repository;
 
 	@Autowired
 	private OrderResourceAssembler assembler;
