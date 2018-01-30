@@ -18,6 +18,7 @@ import com.shop.model.Product;
 import com.shop.repository.ProductRepository;
 import com.shop.resource.ProductResource;
 import com.shop.resource.ProductResourceAssembler;
+import com.shop.resource.ProductResourceList;
 
 @RestController
 @RequestMapping(value = "/api/products")
@@ -35,10 +36,10 @@ public class ProductRestController {
 		return new ResponseEntity<ProductResource>(assembler.toResource(savedProduct), HttpStatus.CREATED);
 	}
 
-	@GetMapping(produces = { "application/json" })
-	public ResponseEntity<Collection<ProductResource>> findAll() {
+	@GetMapping(produces = { "application/json", "application/xml" })
+	public ResponseEntity<ProductResourceList> findAll() {
 		List<Product> products = productRepository.findAll();
-		return new ResponseEntity<Collection<ProductResource>>(assembler.toResourceCollection(products), HttpStatus.OK);
+		return new ResponseEntity<ProductResourceList>(assembler.toResourceCollection(products), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "{id}", produces = { "application/json", "application/xml" })

@@ -1,7 +1,10 @@
 package com.shop.resource;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.stereotype.Component;
 
@@ -10,14 +13,14 @@ import com.shop.model.Product;
 @Component
 public class ProductResourceAssembler {
 
-	public Collection<ProductResource> toResourceCollection(Collection<Product> domainObjects) {
-		return domainObjects.stream().map(o -> toResource(o)).collect(Collectors.toList());
+	public ProductResourceList toResourceCollection(Collection<Product> domainObjects) {
+		ProductResourceList list = new ProductResourceList();
+		list.setList(domainObjects.stream().map(o -> toResource(o)).collect(Collectors.toList()));
+		return list;
 	}
 
 	public ProductResource toResource(Product o) {
-		ProductResource resource = new ProductResource();
-		resource.setProduct(o);
-		return resource;
+		return new ProductResource(o);
 	}
 
 }
