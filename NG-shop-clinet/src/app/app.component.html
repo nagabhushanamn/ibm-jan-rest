@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="page-header">NG- {{title}}</div>
+
+    <div class="list-group">
+        <span class="badge">{{cart.length}}</span> in cart |
+        <a href (click)="toggleCart($event)">{{viewCart?'view-products':'view-cart'}}</a>
+        <hr/>
+        <div *ngIf="viewCart">
+            <app-view-cart (newOrder)="clearCart()" [items]="cart"></app-view-cart>
+        </div>
+        <div *ngIf="!viewCart">
+            <div class="list-group-item" *ngFor="let product of products | slice:0:10;let idx=index">
+                <app-product (buy)="addToCart($event)" [product]="product" [idx]="idx"></app-product>
+            </div>
+        </div>
+    </div>
+
+</div>

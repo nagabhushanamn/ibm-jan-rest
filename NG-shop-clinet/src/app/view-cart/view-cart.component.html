@@ -1,0 +1,12 @@
+<div>
+	<div *ngIf="message" class="alert alert-success">{{message}}</div>
+	<table class="table table-bordered table-condensed table-stripped">
+		<tr *ngFor="let item of items;let idx=index;">
+			<td>{{idx+1}}</td>
+			<td>{{item.name}}</td>
+			<td>{{item.price|currency:'INR'}}</td>
+		</tr>
+	</table>
+	<hr />
+	<button *ngIf="items.length!==0"  (click)="submitNewOrder()" class="btn btn-default"> submit - New Order</button>
+</div>
